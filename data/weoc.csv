@@ -1,0 +1,93 @@
+﻿time,sample_id,npoc_mg_L,abs280_cm_1
+initial,OTO-101,6.54,0.075
+initial,OTO-102,5.99,0.094
+initial,OTO-103,6.72,0.08
+initial,OTO-104,6.08,0.093
+initial,OTO-105,5.84,0.088
+initial,OTO-201,3.74,0.088
+initial,OTO-202,3.58,0.087
+initial,OTO-203,4.09,0.099
+initial,OTO-204,3.99,0.096
+initial,OTO-205,4.17,0.103
+initial,OTO-301,7.09,0.085
+initial,OTO-302,7.41,0.074
+initial,OTO-303,6.63,0.08
+initial,OTO-304,6.68,0.08
+initial,OTO-305,7.08,0.086
+initial,OTO-401,6.91,0.084
+initial,OTO-402,6.89,0.084
+initial,OTO-403,7.34,0.072
+initial,OTO-404,7.40,0.074
+initial,OTO-405,6.17,0.076
+initial,REP OTO 405,6.75,0.079
+initial,Filter Blank,0.02,
+initial,Solution Blank,-0.12,
+initial,OTB-101,0.48,0.011
+initial,OTB-102,0.32,0.011
+initial,OTB-103,0.38,0.011
+initial,OTB-104,0.17,0.01
+initial,OTB-105,0.29,0.011
+initial,OTB-201,0.35,0.009
+initial,OTB-202,0.31,0.01
+initial,OTB-203,0.23,0.01
+initial,OTB-204,0.43,0.01
+initial,OTB-205,0.36,0.01
+initial,OTB-301,0.57,0.011
+initial,OTB-302,0.34,0.01
+initial,OTB-303,0.77,0.009
+initial,OTB-304,0.54,0.012
+initial,OTB-305,0.36,0.01
+initial,OTB-401,0.49,0.009
+initial,OTB-402,0.37,0.009
+initial,OTB-403,0.44,0.009
+initial,OTB-404,0.36,0.009
+initial,OTB-405,0.39,0.009
+initial,REP OTB 405,0.49,0.012
+initial,Filter Blank,,
+initial,Solution Blank,,
+post-freeze,OTO-101,10.27,0.063
+post-freeze,OTO-102,8.08,0.064
+post-freeze,OTO-103,8.25,0.066
+post-freeze,OTO-104,9.28,0.07
+post-freeze,OTO-105,8.87,0.075
+post-freeze,OTO-201,8.95,0.063
+post-freeze,OTO-202,8.99,0.067
+post-freeze,OTO-203,8.82,0.067
+post-freeze,OTO-204,8.79,0.064
+post-freeze,OTO-205,8.78,0.061
+post-freeze,OTO-301,9.46,0.065
+post-freeze,OTO-302,8.58,0.066
+post-freeze,OTO-303,11.36,0.073
+post-freeze,OTO-304,10.14,0.069
+post-freeze,OTO-305,10.28,0.073
+post-freeze,OTO-401,9.63,0.096
+post-freeze,OTO-402,10.21,0.087
+post-freeze,OTO-403,10.95,0.089
+post-freeze,OTO-404,10.17,0.082
+post-freeze,OTO-405,10.55,0.086
+post-freeze,REP OTO 403,11.01,0.09
+post-freeze,Filter Blank,0.20,0
+post-freeze,Solution Blank,0.12,0
+post-freeze,OTB-101,0.95,0.015
+post-freeze,OTB-102,0.92,0.016
+post-freeze,OTB-103,0.76,0.013
+post-freeze,OTB-104,1.24,0.019
+post-freeze,OTB-105,1.18,0.017
+post-freeze,OTB-201,0.95,0.016
+post-freeze,OTB-202,1.38,0.02
+post-freeze,OTB-203,0.93,0.015
+post-freeze,OTB-204,0.88,0.015
+post-freeze,OTB-205,1.23,0.016
+post-freeze,OTB-301,0.95,0.012
+post-freeze,OTB-302,0.94,0.014
+post-freeze,OTB-303,1.07,0.02
+post-freeze,OTB-304,0.99,0.018
+post-freeze,OTB-305,0.75,0.016
+post-freeze,OTB-401,2.03,0.02
+post-freeze,OTB-402,2.85,0.019
+post-freeze,OTB-403,2.14,0.016
+post-freeze,OTB-404,2.75,0.017
+post-freeze,OTB-405,0.57,0.015
+post-freeze,REP OTB 404,2.60,0.016
+post-freeze,Filter Blank,0.19,
+post-freeze,Solution Blank,0.06,
