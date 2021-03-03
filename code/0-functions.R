@@ -1,5 +1,5 @@
-library(tidyverse)
 library(drake)
+library(tidyverse)
 library(patchwork)
 library(PNWColors)
 library(soilpalettes)
