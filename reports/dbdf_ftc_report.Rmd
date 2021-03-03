@@ -1,0 +1,69 @@
+---
+title: "DBDF-FTC incubations"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE,
+                      collapse = TRUE,
+                      warning = FALSE,
+                      message = FALSE,
+                      comment = "#>"
+                      )
+```
+
+
+
+## Experiment
+
+O and B horizon soils were collected from the Dwight B. Demerritt Forest. Sieved (6 mm/2 mm) and homogenized.  
+The soil was weighed into Mason jars and subjected to one of four treatments (experimental replication n = 5):
+
+1. FTC-1: frozen continuously with one 24-hour thaw period
+1. FTC-2: frozen continuously with two 24-hour thaw periods
+1. FTC-6: frozen continuously with six 24-hour thaw periods
+1. control: continuously kept at +5 C
+
+Incubations lasted 6 weeks (42 days) total.
+
+Frozen conditions were -10 C, thaw conditions were +5 C
+
+Subsamples were collected from the soils before and after the incubation, for chemistry analysis.
+
+Respiration (CO2 flux) was measured on all samples before and after the incubation, and on FTC-6 soils during a few thaw periods. 
+The jars were sealed for 60 minutes, and 10-mL headspace samples were collected with a syringe at 0, 20, 40, 60 minute intervals.
+
+
+## Results
+
+
+```{r nh4_graph, fig.height=4, fig.width=7}
+readd(nh4_graph)
+```
+
+```{r weoc_graphs, fig.height=4, fig.width=7}
+readd(weoc_graphs)
+```
+
+```{r resp_graphs, fig.height=4, fig.width=7}
+readd(respiration_graphs)$gg_resp
+```
+
+Temporal changes in respiration for FTC-6 and control soils, measured during the thaw periods
+
+```{r resp_graphs2, fig.height=5, fig.width=7}
+readd(respiration_graphs)$gg_resp_ftc6
+```
+
+---
+
+<details>   
+   <summary>Session Info</summary>
+   
+Date run: `r `Sys.Date()`
+
+```{r}
+sessionInfo()
+```
+
+</details> 
