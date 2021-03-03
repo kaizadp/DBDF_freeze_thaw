@@ -11,6 +11,7 @@ ftc_plan =
     tctn = read.csv("data/total_cn.csv"),
     tctn_key = read.csv("data/total_cn_key.csv", na.strings = ""),
     tctn_processed = process_tctn(tctn, tctn_key, corekey_processed),
+    tctn_graphs = make_graphs_tctn(tctn_processed),
     
     #
     # extractable inorganic N -------------------------------------------------

@@ -17,20 +17,33 @@ process_tctn = function(tctn, tctn_key, corekey_processed){
   filter(is.na(skip))
 }
 
-make_graphs_tctn = function(){
-  tctn_processed %>% 
+make_graphs_tctn = function(tctn_processed){
+  gg_tc = 
+    tctn_processed %>% 
+    mutate(ftc = replace_na(ftc, "control")) %>% 
     ggplot(aes(x = treatment, y = tc_perc, color = as.character(ftc))) +
-    geom_point(position = position_dodge(width = 0.4))+
-    facet_wrap(~horizon, scales = "free_y")+
+    geom_point(size = 3, position = position_dodge(width = 0.4))+
+    scale_color_manual(values = pnw_palette("Sunset",4))+
+    facet_wrap(~reorder(horizon, desc(horizon)), scales = "free_y")+
     theme_kp()+
-    NULL
+    labs(x = "", color = "FTC count", shape = "",
+         subtitle = "post-incubation data only")+
+    NULL  
   
-  tctn_processed %>% 
+  gg_tn = 
+    tctn_processed %>% 
+    mutate(ftc = replace_na(ftc, "control")) %>% 
     ggplot(aes(x = treatment, y = tn_perc, color = as.character(ftc))) +
-    geom_point(position = position_dodge(width = 0.4))+
-    facet_wrap(~horizon, scales = "free_y")+
+    geom_point(size = 3, position = position_dodge(width = 0.4))+
+    scale_color_manual(values = pnw_palette("Sunset",4))+
+    facet_wrap(~reorder(horizon, desc(horizon)), scales = "free_y")+
     theme_kp()+
-    NULL
+    labs(x = "", color = "FTC count", shape = "",
+         subtitle = "post-incubation data only")+
+    NULL 
+  
+  list(gg_tc = gg_tc,
+       gg_tn = gg_tn)
 }
 compute_stats_tctn = function(){
   summary(aov(tc_perc ~ ftc, data = tctn_processed %>% filter(treatment  == "freeze-thaw" & horizon == "O")))

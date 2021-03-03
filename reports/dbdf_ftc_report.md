@@ -1,7 +1,9 @@
 DBDF-FTC incubations
 ================
 
-## Experiment
+## “Repeated freeze-thaw cycles increase extractable, but not total, carbon and nitrogen in a Maine coniferous soil”
+
+### Experiment
 
 O and B horizon soils were collected from the Dwight B. Demerritt
 Forest. Sieved (6 mm/2 mm) and homogenized.  
@@ -25,9 +27,24 @@ incubation, and on FTC-6 soils during a few thaw periods. The jars were
 sealed for 60 minutes, and 10-mL headspace samples were collected with a
 syringe at 0, 20, 40, 60 minute intervals.
 
-## Results
+### Results
+
+**Total C, total N**
+
+    #> $gg_tc
+
+![](dbdf_ftc_report_files/figure-gfm/tctn_graph-1.png)<!-- -->
+
+    #> 
+    #> $gg_tn
+
+![](dbdf_ftc_report_files/figure-gfm/tctn_graph-2.png)<!-- -->
+
+**Extractable NH4-N**
 
 ![](dbdf_ftc_report_files/figure-gfm/nh4_graph-1.png)<!-- -->
+
+**Water extractable organic C**
 
     #> $gg_weoc
 
@@ -37,6 +54,8 @@ syringe at 0, 20, 40, 60 minute intervals.
     #> $gg_suva
 
 ![](dbdf_ftc_report_files/figure-gfm/weoc_graphs-2.png)<!-- -->
+
+**Respiration**
 
 ![](dbdf_ftc_report_files/figure-gfm/resp_graphs-1.png)<!-- -->
 

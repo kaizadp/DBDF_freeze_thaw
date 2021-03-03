@@ -12,9 +12,10 @@ knitr::opts_chunk$set(echo = FALSE,
                       )
 ```
 
+## "Repeated freeze-thaw cycles increase extractable, but not total, carbon and nitrogen in a Maine coniferous soil"
 
 
-## Experiment
+### Experiment
 
 O and B horizon soils were collected from the Dwight B. Demerritt Forest. Sieved (6 mm/2 mm) and homogenized.  
 The soil was weighed into Mason jars and subjected to one of four treatments (experimental replication n = 5):
@@ -34,16 +35,27 @@ Respiration (CO2 flux) was measured on all samples before and after the incubati
 The jars were sealed for 60 minutes, and 10-mL headspace samples were collected with a syringe at 0, 20, 40, 60 minute intervals.
 
 
-## Results
+### Results
 
+**Total C, total N**
+
+```{r tctn_graph, fig.height=4, fig.width=7}
+readd(tctn_graphs)
+```
+
+**Extractable NH4-N**
 
 ```{r nh4_graph, fig.height=4, fig.width=7}
 readd(nh4_graph)
 ```
 
+**Water extractable organic C**
+
 ```{r weoc_graphs, fig.height=4, fig.width=7}
 readd(weoc_graphs)
 ```
+
+**Respiration**
 
 ```{r resp_graphs, fig.height=4, fig.width=7}
 readd(respiration_graphs)$gg_resp
