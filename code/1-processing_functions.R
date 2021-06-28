@@ -106,16 +106,22 @@ process_weoc = function(weoc, weoc_weights, corekey_processed){
 }
 
 make_graphs_weoc = function(weoc_processed){
-  gg_weoc = 
+  (gg_weoc = 
     weoc_processed %>% 
-    mutate(ftc = replace_na(ftc, "control")) %>% 
+    mutate(ftc = replace_na(ftc, "Control")) %>% 
     ggplot(aes(x = time, y = weoc_mg_kg, color = as.character(ftc), shape = treatment))+
     geom_point(size = 3, position = position_dodge(width = 0.4))+
-    scale_color_manual(values = pnw_palette("Sunset",4))+
+    scale_color_manual(values = pnw_palette("Sunset",4),
+                       labels = c("FTC-1", "FTC-2", "FTC-6", "control"))+
     facet_wrap(~reorder(horizon, desc(horizon)), scales = "free_y")+
+    labs(y = expression(bold("WEOC, mg kg"^-1)))+
+     scale_x_discrete(breaks = c("initial", "post-freeze"),
+                      labels = c("pre-incubation", "post-incubation"))+
     theme_kp()+
     labs(x = "", color = "FTC count", shape = "")+
-    NULL   
+     guides(shape = guide_legend(order = 1),
+            color = guide_legend(order = 2))+
+    NULL)   
   
   gg_suva = 
     weoc_processed %>% 
@@ -236,3 +242,159 @@ misc_resp = function(){
   
   
 }
+
+# combine all -------------------------------------------------------------
+
+combine_all_data = function(tctn_processed, din_processed, weoc_processed, respiration_processed, corekey_processed){
+  tctn_1 = 
+    tctn_processed %>% 
+    dplyr::select(time, sample_id, tc_perc, tn_perc) %>% 
+    pivot_longer(-c(time, sample_id), names_to = "variable")
+  
+  din_1 = 
+    din_processed %>% 
+    dplyr::select(time, sample_id, nh4n_mg_kg) %>% 
+    rename(value = nh4n_mg_kg) %>% 
+    mutate(variable = "nh4_mg_kg") %>% 
+    dplyr::select(time, sample_id, variable, value)
+  
+  weoc_1 = 
+    weoc_processed %>% 
+    dplyr::select(time, sample_id, weoc_mg_kg, suva_L_mg_m) %>% 
+    pivot_longer(-c(time, sample_id), names_to = "variable")
+  
+  resp_1 = 
+    respiration_processed %>% 
+    filter(is.na(notes1)) %>% 
+    ungroup() %>% 
+    dplyr::select(time, sample_id, flux_mgC_g_hr) %>% 
+    rename(value = flux_mgC_g_hr) %>% 
+    mutate(variable = "flux_mgC_g_hr", 
+           value = round(value, 2),
+           time = recode(time, "post-freeze-6hr" = "post-freeze")) %>% 
+    dplyr::select(time, sample_id, variable, value)
+  
+  bind_rows(tctn_1, din_1, weoc_1, resp_1) %>% 
+    left_join(corekey_processed)
+}
+compute_summaries = function(combined){
+
+# ftc summary -- effect of ftc frequency ----------------------------------
+  do_aov2 = function(dat){
+    aov(value ~ ftc, data = dat) %>% 
+      broom::tidy() %>% 
+      filter(term == "ftc") %>% 
+      rename(p_value = `p.value`) %>% 
+      dplyr::select(statistic, p_value) %>% 
+      mutate(statistic = round(statistic, 2),
+             p_value = round(p_value, 3))
+  }
+  stats_ftc = 
+    combined %>% 
+    filter(time == "post-freeze" & treatment == "freeze-thaw") %>% 
+    group_by(time, horizon, variable) %>% 
+    do(do_aov2(.)) 
+  
+  ftc_summary = 
+    combined %>% 
+    filter(time == "post-freeze" & treatment == "freeze-thaw") %>% 
+    group_by(time, horizon, variable, ftc) %>% 
+    dplyr::summarise(mean  = mean(value),
+                     se = sd(value)/sqrt(n()),
+                     mean_se = paste(round(mean, 2), "\u00b1", round(se, 2))) %>% 
+    mutate(ftc = paste0("ftc-", ftc)) %>% 
+    dplyr::select(-mean, -se) %>% 
+    pivot_wider(names_from = "ftc", values_from = "mean_se") %>% 
+    left_join(stats_ftc) %>% knitr::kable()
+  
+
+# ftc vs. control ---------------------------------------------------------
+stats_aov_control_vs_ftc = function(){
+  do_aov1 = function(dat){
+    aov(value ~ treatment, data = dat) %>% 
+      broom::tidy() %>% 
+      filter(term == "treatment") %>% 
+      rename(p_value = `p.value`) %>% 
+      dplyr::select(statistic, p_value) %>% 
+      mutate(statistic = round(statistic, 2),
+             p_value = round(p_value, 3))
+  }
+  stats_control_vs_ftc = 
+    combined %>% 
+    filter(time == "post-freeze") %>%
+    group_by(time, horizon, variable) %>% 
+    do(do_aov1(.))
+}
+stats_hsd_control_vs_ftc = function(){
+  do_hsd = function(dat){
+    a = aov((value) ~ trt, data = dat) 
+    h = HSD.test(a, "trt")
+    h$groups %>% 
+      rownames_to_column("trt") %>% 
+      dplyr::select(trt, groups) %>% 
+      pivot_wider(values_from = "groups", names_from = "trt")
+      
+  }
+  stats_control_vs_ftc = 
+    incubation_combined %>% 
+    group_by(horizon, variable) %>% 
+    do(do_hsd(.))
+  
+}  
+  
+  incubation_initial = 
+    combined %>% 
+    filter(time == "initial") %>% 
+    rename(trt = time)
+  incubation_final = 
+    combined %>% 
+    filter(time == "post-freeze") %>% 
+    rename(trt = treatment)
+  
+  incubation_combined = 
+    bind_rows(incubation_initial, incubation_final)
+    
+  
+  group_by(horizon, variable, time) %>% 
+    dplyr::summarise(mean  = mean(value),
+                     se = sd(value)/sqrt(n()),
+                     mean_se = paste(round(mean, 2), "\u00b1", round(se, 2)))
+
+  incubation_summary_final = 
+    combined %>% 
+    filter(time == "post-freeze") %>% 
+    group_by(horizon, variable, treatment) %>% 
+    dplyr::summarise(mean  = mean(value),
+                     se = sd(value)/sqrt(n()),
+                     mean_se = paste(round(mean, 2), "\u00b1", round(se, 2))) %>% 
+    rename(trt = treatment)
+    
+  incubation_summary = 
+    incubation_combined %>% 
+    group_by(horizon, variable, trt) %>% 
+    dplyr::summarise(mean  = mean(value),
+                     se = sd(value)/sqrt(n()),
+                     mean_se = paste(round(mean, 2), "\u00b1", round(se, 2))) %>% 
+    
+    dplyr::select(-mean, -se) %>% 
+    pivot_wider(names_from = "trt", values_from = "mean_se") %>% knitr::kable()
+  
+
+    
+   
+
+}
+
+
+aov(nh4n_mg_kg ~ as.character(ftc),
+ data = 
+  din_processed %>% 
+  filter(time == "post-freeze" & treatment == "freeze-thaw" & horizon == "B")
+) %>% summary()
+
+
+  din_processed %>% 
+  filter(time == "post-freeze") %>% 
+  ungroup() %>% 
+  group_by(horizon, treatment) %>% 
+  dplyr::summarize(mean = mean(moisture_perc))

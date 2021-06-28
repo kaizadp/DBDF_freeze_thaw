@@ -33,6 +33,10 @@ ftc_plan =
     respiration_graphs = make_graphs_respiration(respiration_processed),
     
     
+    # combined summary --------------------------------------------------------
+    combined = combine_all_data(tctn_processed, din_processed, weoc_processed, respiration_processed, corekey_processed),
+    
+    
     # report ------------------------------------------------------------------
     report = rmarkdown::render(
       knitr_in("reports/dbdf_ftc_report.Rmd"),
@@ -41,4 +45,4 @@ ftc_plan =
 
 
 make(ftc_plan)
-loadd(tctn_processed, din_processed, weoc_processed, respiration_processed)
+loadd(tctn_processed, din_processed, weoc_processed, respiration_processed, corekey_processed)

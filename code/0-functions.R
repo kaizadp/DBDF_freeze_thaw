@@ -3,7 +3,7 @@ library(tidyverse)
 library(patchwork)
 library(PNWColors)
 library(soilpalettes)
-
+library(agricolae)
 
 theme_kp <- function() {  # this for all the elements common across plots
   theme_bw() %+replace%
