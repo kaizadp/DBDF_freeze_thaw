@@ -5,8 +5,7 @@
 
 This repository contains code and data for **Patel et al. 2021.** 
 "Repeated freeze-thaw cycles increase extractable, but not total, carbon and nitrogen in a Maine coniferous soil". 
-*Geoderma*.
-https://doi.org/10.1016/j.geoderma.2021.115353.
+*Geoderma*. https://doi.org/10.1016/j.geoderma.2021.115353.
 
 ---
 
