@@ -36,6 +36,12 @@ ftc_plan =
     # combined summary --------------------------------------------------------
     combined = combine_all_data(tctn_processed, din_processed, weoc_processed, respiration_processed, corekey_processed),
     
+
+    # output ------------------------------------------------------------------
+    combined %>% 
+      arrange(variable) %>% 
+      write.csv("data/processed/processed_data.csv", row.names = F),
+
     
     # report ------------------------------------------------------------------
     report = rmarkdown::render(
