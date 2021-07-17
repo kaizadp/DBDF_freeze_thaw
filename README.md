@@ -1,4 +1,8 @@
+[![DOI](https://zenodo.org/badge/340532842.svg)](https://zenodo.org/badge/latestdoi/340532842)
+
+
 # DBDF_freeze_thaw
+
 This repository contains code and data for **Patel et al. 2021.** 
 "Repeated freeze-thaw cycles increase extractable, but not total, carbon and nitrogen in a Maine coniferous soil". 
 *Geoderma*.
