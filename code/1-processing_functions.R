@@ -378,23 +378,7 @@ stats_hsd_control_vs_ftc = function(){
     
     dplyr::select(-mean, -se) %>% 
     pivot_wider(names_from = "trt", values_from = "mean_se") %>% knitr::kable()
-  
-
-    
-   
 
 }
 
 
-aov(nh4n_mg_kg ~ as.character(ftc),
- data = 
-  din_processed %>% 
-  filter(time == "post-freeze" & treatment == "freeze-thaw" & horizon == "B")
-) %>% summary()
-
-
-  din_processed %>% 
-  filter(time == "post-freeze") %>% 
-  ungroup() %>% 
-  group_by(horizon, treatment) %>% 
-  dplyr::summarize(mean = mean(moisture_perc))
