@@ -85,37 +85,41 @@ Date run: `r`Sys.Date()\`
     #> [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
     #> 
     #> attached base packages:
-    #> [1] stats     graphics  grDevices utils     datasets  methods  
-    #> [7] base     
+    #> [1] stats     graphics  grDevices utils     datasets  methods   base     
     #> 
     #> other attached packages:
-    #>  [1] soilpalettes_0.1.0 PNWColors_0.1.0    patchwork_1.1.1   
-    #>  [4] forcats_0.5.1      stringr_1.4.0      dplyr_1.0.4       
-    #>  [7] purrr_0.3.4        readr_1.4.0        tidyr_1.1.2       
-    #> [10] tibble_3.0.6       ggplot2_3.3.3      tidyverse_1.3.0   
-    #> [13] drake_7.13.1      
+    #>  [1] agricolae_1.3-3    soilpalettes_0.1.0 patchwork_1.1.1   
+    #>  [4] PNWColors_0.1.0    forcats_0.5.1      stringr_1.4.0     
+    #>  [7] dplyr_1.0.4        purrr_0.3.4        readr_1.4.0       
+    #> [10] tidyr_1.1.2        tibble_3.0.6       ggplot2_3.3.3     
+    #> [13] tidyverse_1.3.0    drake_7.13.1      
     #> 
     #> loaded via a namespace (and not attached):
-    #>  [1] Rcpp_1.0.6         lubridate_1.7.9.2  txtq_0.2.3        
-    #>  [4] prettyunits_1.1.1  utf8_1.1.4         assertthat_0.2.1  
-    #>  [7] digest_0.6.27      R6_2.5.0           cellranger_1.1.0  
-    #> [10] backports_1.2.1    reprex_1.0.0       evaluate_0.14     
-    #> [13] highr_0.8          httr_1.4.2         pillar_1.4.7      
-    #> [16] rlang_0.4.10       progress_1.2.2     readxl_1.3.1      
-    #> [19] rstudioapi_0.13    rmarkdown_2.6.6    labeling_0.4.2    
-    #> [22] igraph_1.2.6       munsell_0.5.0      broom_0.7.4       
-    #> [25] compiler_4.0.2     modelr_0.1.8       xfun_0.20         
-    #> [28] pkgconfig_2.0.3    htmltools_0.5.1.1  tidyselect_1.1.0  
-    #> [31] fansi_0.4.2        crayon_1.4.0       dbplyr_2.0.0      
-    #> [34] withr_2.4.1        grid_4.0.2         jsonlite_1.7.2    
-    #> [37] gtable_0.3.0       lifecycle_0.2.0    DBI_1.1.1         
-    #> [40] magrittr_2.0.1     storr_1.2.5        scales_1.1.1      
-    #> [43] cli_2.2.0          stringi_1.5.3      farver_2.0.3      
-    #> [46] fs_1.5.0           xml2_1.3.2         ellipsis_0.3.1    
-    #> [49] filelock_1.0.2     generics_0.1.0     vctrs_0.3.6       
-    #> [52] RColorBrewer_1.1-2 tools_4.0.2        glue_1.4.2        
-    #> [55] hms_1.0.0          parallel_4.0.2     yaml_2.2.1        
-    #> [58] colorspace_2.0-0   base64url_1.4      rvest_0.3.6       
-    #> [61] knitr_1.31         haven_2.3.1
+    #>  [1] nlme_3.1-152      fs_1.5.0          lubridate_1.7.9.2
+    #>  [4] filelock_1.0.2    progress_1.2.2    httr_1.4.2       
+    #>  [7] tools_4.0.2       backports_1.2.1   R6_2.5.0         
+    #> [10] AlgDesign_1.2.0   DBI_1.1.1         questionr_0.7.4  
+    #> [13] colorspace_2.0-0  withr_2.4.1       tidyselect_1.1.0 
+    #> [16] prettyunits_1.1.1 klaR_0.6-15       compiler_4.0.2   
+    #> [19] cli_2.2.0         rvest_0.3.6       xml2_1.3.2       
+    #> [22] labeling_0.4.2    scales_1.1.1      digest_0.6.27    
+    #> [25] txtq_0.2.3        rmarkdown_2.6.6   pkgconfig_2.0.3  
+    #> [28] htmltools_0.5.1.1 labelled_2.7.0    dbplyr_2.0.0     
+    #> [31] fastmap_1.1.0     highr_0.8         rlang_0.4.10     
+    #> [34] readxl_1.3.1      rstudioapi_0.13   shiny_1.6.0      
+    #> [37] farver_2.0.3      generics_0.1.0    combinat_0.0-8   
+    #> [40] jsonlite_1.7.2    magrittr_2.0.1    Rcpp_1.0.6       
+    #> [43] munsell_0.5.0     fansi_0.4.2       lifecycle_0.2.0  
+    #> [46] stringi_1.5.3     yaml_2.2.1        MASS_7.3-53      
+    #> [49] storr_1.2.5       grid_4.0.2        parallel_4.0.2   
+    #> [52] promises_1.1.1    crayon_1.4.0      miniUI_0.1.1.1   
+    #> [55] lattice_0.20-41   haven_2.3.1       hms_1.0.0        
+    #> [58] knitr_1.31        pillar_1.4.7      igraph_1.2.6     
+    #> [61] base64url_1.4     reprex_1.0.0      glue_1.4.2       
+    #> [64] evaluate_0.14     modelr_0.1.8      vctrs_0.3.6      
+    #> [67] httpuv_1.5.5      cellranger_1.1.0  gtable_0.3.0     
+    #> [70] assertthat_0.2.1  xfun_0.20         mime_0.9         
+    #> [73] xtable_1.8-4      broom_0.7.4       later_1.1.0.1    
+    #> [76] tinytex_0.29      cluster_2.1.0     ellipsis_0.3.1
 
 </details>
