@@ -36,3 +36,6 @@ vignettes/*.pdf
 *.knit.md
 
 .DS_Store
+
+.drake/
+*.html
