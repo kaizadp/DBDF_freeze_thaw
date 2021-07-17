@@ -45,24 +45,6 @@ ftc_plan =
 
 
 make(ftc_plan)
-loadd(tctn_processed, din_processed, weoc_processed, respiration_processed, corekey_processed)
+#loadd(tctn_processed, din_processed, weoc_processed, respiration_processed, corekey_processed)
 
 
-
-# pre-treatment data ------------------------------------------------------
-loadd(combined)
-
-pre_treatment_table = 
-  combined %>% 
-  filter(time == "initial") %>% 
-  mutate(trt = case_when(treatment == "control" ~ "control",
-                         treatment == "freeze-thaw" ~ paste0("FTC-",ftc))) %>% 
-  group_by(horizon, trt, variable) %>% 
-  dplyr::summarise(value_mean = round(mean(value),2),
-                   value_se = round(sd(value)/sqrt(n()),2),
-                   value = paste(value_mean, "\u00b1", value_se)) %>% 
-  dplyr::select(horizon, trt, variable, value) %>% 
-  pivot_wider(names_from = "trt", values_from = "value")
-
-pre_treatment_table %>% 
-  knitr::kable()
